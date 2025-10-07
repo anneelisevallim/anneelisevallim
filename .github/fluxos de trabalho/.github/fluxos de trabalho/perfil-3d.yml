@@ -1,0 +1,28 @@
+nome: GitHub-Profile-3D-Contrib
+ 
+sobre:
+  agendar:
+    - cron: "0 18 * * *"
+  fluxo de trabalho_despacho:
+ 
+permissões:
+  conteúdo: escrever
+ 
+empregos:
+  construir:
+    em execução: ubuntu-latest
+    nome: gerar-github-perfil-3d-contrib
+    passos:
+      - usos: ações/checkout@v4
+      - usos: yoshi389111/github-profile-3d-contrib@latest
+        ambiente:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NOME DE USUÁRIO: ${{ github.repository_owner }}
+      - nome: Commit & Push
+        executar: |
+          git config nome de usuário github-actions
+          git config usuário.e-mail github-actions@github.com
+          git add -A .
+          se git commit -m "gerado"; então
+            git push
+          fi
